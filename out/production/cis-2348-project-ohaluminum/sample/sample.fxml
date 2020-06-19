@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+
+    <Label text="Asset Management System" textFill="#470a73b8" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
+    </Label>
+
+    <TableView fx:id="tableView" GridPane.columnIndex="0" GridPane.rowIndex="1">
+
+        <columns>
+            <TableColumn fx:id="IDColumn" prefWidth="180.0" text="Asset ID Number">
+                <cellValueFactory><PropertyValueFactory property="ID" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="NameColumn" prefWidth="200.0" text="Asset Name">
+                <cellValueFactory><PropertyValueFactory property="Name" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="TypeColumn" prefWidth="150.0" text="Asset Type">
+                <cellValueFactory><PropertyValueFactory property="Type" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="LocationColumn" prefWidth="150.0" text="Asset Location">
+                <cellValueFactory><PropertyValueFactory property="Location" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="UsedByColumn" prefWidth="120.0" text="Used By">
+                <cellValueFactory><PropertyValueFactory property="UsedBy" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="StateColumn" prefWidth="120.0" text="Asset State">
+                <cellValueFactory><PropertyValueFactory property="State" />
+                </cellValueFactory>
+            </TableColumn>
+
+        </columns>
+
+    </TableView>
+
+    <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
+
+            <children>
+
+                <Label fx:id="totalComputer" prefHeight="19.0" prefWidth="260.0" text="Total Computers: 0" textFill="#0cc480">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+
+                <Label fx:id="totalPrinter" prefHeight="19.0" prefWidth="260.0" text="Total Printers: 0" textFill="#10b1d6">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+
+                <Label fx:id="totalAudioVideo" prefHeight="19.0" prefWidth="260.0" text="Total Audio/Video: 0" textFill="#eed517">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+
+                <Button fx:id="countButton" onAction="#countSubtype" prefHeight="25.0" prefWidth="143.0" text="Subtotal Update" textFill="#b805ff" />
+
+            </children>
+    </HBox>
+    
+    <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3">
+
+        <children>
+
+            <ComboBox fx:id="TypeOption" prefHeight="25.0" prefWidth="145.0" promptText="Select Category" />
+
+            <TextField fx:id="IDField" prefHeight="25.0" prefWidth="120.0" promptText="Asset ID" />
+            <TextField fx:id="NameField" prefHeight="25.0" prefWidth="120.0" promptText="Asset Name" />
+            <TextField fx:id="LocationField" prefHeight="25.0" prefWidth="120.0" promptText="Asset Location" />
+            <TextField fx:id="UsedByField" prefHeight="25.0" prefWidth="120.0" promptText="Used By" />
+
+            <ComboBox fx:id="StateOption" prefHeight="25.0" prefWidth="125.0" promptText="Select State" />
+
+        </children>
+
+    </HBox>
+
+    <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="4">
+
+        <children>
+
+            <Label prefHeight="19.0" prefWidth="250.0" text="Additional Computer's information: " textFill="#0cc480">
+                <font>
+                    <Font name="System Bold" size="13.0" />
+                </font>
+            </Label>
+
+            <ComboBox fx:id="SubTypeOption" prefHeight="25.0" prefWidth="150.0" promptText="Computer: SubType" />
+
+            <TextField fx:id="batteryCapacityField" prefHeight="25.0" prefWidth="250.0" promptText="Computer: Battery Capacity (Ex. 100.0, 150.0)" />
+
+            <TextField fx:id="usedPercentageField" prefHeight="25.0" prefWidth="275.0" promptText="Computer: Battery Used Percentage (Ex: 0.5, 0.9)" />
+
+        </children>
+
+    </HBox>
+
+    <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
+
+        <children>
+
+            <Label prefHeight="19.0" prefWidth="250.0" text="Additional Printer's Information: " textFill="#10b1d6">
+                <font>
+                    <Font name="System Bold" size="13.0" />
+                </font>
+            </Label>
+
+            <TextField fx:id="inkCapacityField" prefWidth="250" promptText="Printer: Ink Capacity (Ex. 100.0, 150.0)" />
+            <TextField fx:id="remainingPercentageField" prefHeight="25.0" prefWidth="280.0" promptText="Printer: Ink Remaining Percentage (Ex: 0.5, 0.9)" />
+
+        </children>
+
+    </HBox>
+
+    <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="6">
+
+        <children>
+
+            <Label prefHeight="19.0" prefWidth="250.0" text="Additional Audio/Video's Information: " textFill="#eed517">
+                <font>
+                    <Font name="System Bold" size="13.0" />
+                </font>
+            </Label>
+
+            <TextField fx:id="PriceField" prefWidth="250" promptText="Audio/Video: Price (Ex. 100.0, 150.0)" />
+
+            <TextField fx:id="DiscountField" prefHeight="25.0" prefWidth="280.0" promptText="Audio/Video: Discount (Ex: 0.5, 0.9)" />
+
+            <Button fx:id="addButton" onAction="#addAsset" prefHeight="25.0" prefWidth="60.0" text="Add" />
+
+            <Button fx:id="deleteButton" onAction="#deleteAsset" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+
+        </children>
+
+    </HBox>
+
+    <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="7">
+
+        <children>
+
+            <Button fx:id="maintenanceButton" onAction="#maintain" prefHeight="25.0" prefWidth="145.0" text="Maintenance Plans" />
+
+            <Button fx:id="configurationButton" onAction="#configure" prefHeight="25.0" prefWidth="145.0" text="IP Configuration" />
+
+            <TextField fx:id="InputFileField" prefHeight="25.0" prefWidth="240.0" promptText="Enter Input File Name" />
+
+            <Button fx:id="inputFileButton" onAction="#inputFile" text="Load File" />
+
+            <TextField fx:id="OutputFileField" prefHeight="25.0" prefWidth="240.0" promptText="Save As" />
+
+            <Button fx:id="outputFileButton" onAction="#outputFile" text="Save File" />
+
+        </children>
+
+    </HBox>
+
+   <columnConstraints>
+       <ColumnConstraints />
+   </columnConstraints>
+
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+
+</GridPane>
